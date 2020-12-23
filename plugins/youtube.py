@@ -21,16 +21,16 @@ async def ytdl(_, message):
     url = message.text.strip()
     print (url)
     await message.reply_chat_action("typing")
-    try:
-        title, thumbnail_url, formats = extractYt(url)
+  #  try:
+      #  title, thumbnail_url, formats = extractYt(url)
+#
+    #    now = datetime.now()
+   #     user_time[message.chat.id] = now + \
+   #                                  timedelta(minutes=youtube_next_fetch)
 
-        now = datetime.now()
-        user_time[message.chat.id] = now + \
-                                     timedelta(minutes=youtube_next_fetch)
-
-    except Exception:
-        await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
-        return
+   # except Exception:
+   #     await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
+  #      return
     buttons = InlineKeyboardMarkup(list(create_buttons(formats)))
     sentm = await message.reply_text("Processing Youtube Url 🔎 🔎 🔎")
     try:
