@@ -4,10 +4,10 @@ from bot import user_time
 from config import youtube_next_fetch
 from helper.ytdlfunc import extractYt, create_buttons
 
-ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
+#tregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
+d= "(?i)https://"
 
-
-@Client.on_message(Filters.regex(ytregex))
+@Client.on_message(Filters.regex(d))
 async def ytdl(_, message):
     userLastDownloadTime = user_time.get(message.chat.id)
     try:
@@ -19,6 +19,7 @@ async def ytdl(_, message):
         pass
 
     url = message.text.strip()
+    print (url)
     await message.reply_chat_action("typing")
     try:
         title, thumbnail_url, formats = extractYt(url)
